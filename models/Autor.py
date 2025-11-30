@@ -1,14 +1,19 @@
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from models.Livro import Livro
+
 class Autor():
     def __init__(self, nome:str):
         self.nome = nome
         self.livros = []
 
 
-    def adicionar_livro(self, livro:str) -> None:
+    def adicionar_livro(self, livro:'Livro') -> None:
         """ 
         Adiciona Livros.
         """
-        self.livros.append(livro)
+        self.livros.append(livro.titulo)
 
     def listar_livros(self) -> None:
         """
@@ -16,8 +21,10 @@ class Autor():
         """
         if not self.livros:
             print(f'Nenhum Livro de {self.nome} cadastrado')
-        for livro in self.livros:
-            print(f'- {livro}')
+        else:
+            print(f'Obras de {self.nome}')
+            for livro in self.livros:
+                print(f'- {livro}')
 
     @property
     def nome(self):
