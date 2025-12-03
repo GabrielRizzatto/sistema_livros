@@ -4,6 +4,7 @@ from abc import ABC,abstractmethod
 if TYPE_CHECKING:
     from models.Autor import Autor
     from models.Genero import Genero
+    from models.Observer import IObserver
 
 
 class Livro(ABC):
@@ -12,9 +13,17 @@ class Livro(ABC):
         self.autor = autor
         self.genero = genero
         self.status = False
+        self._observer: list['IObserver'] = []
 
         autor.adicionar_livro(self)
 
+
+    def adicionar_observer(self, observador: 'IObserver') -> None:
+        self._observer.append(observador)
+
+    def notificar_observer(self) -> None:
+        for observador in self._observer:
+            observador.atualizar(self)
 
 
     def terminiar_leitura(self) ->None:
@@ -27,6 +36,7 @@ class Livro(ABC):
         Mostra Informações do Tipo Livro
         """
         pass
+
     @abstractmethod
     def ler(self):
         pass
@@ -40,4 +50,4 @@ class Livro(ABC):
         titulo = titulo.lower().title() 
         self._titulo = titulo 
 
-
+    

@@ -20,6 +20,7 @@ class LivroEstudo(Livro):
             return None
     
         self.status = True
+        self.notificar_observer()
                   
 
 

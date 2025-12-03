@@ -1,0 +1,2 @@
+[LOG - 03/12/2025 02:46:25] O livro 'Cosmos' foi marcado como LIDO.
+[LOG - 03/12/2025 02:46:25] O livro 'A Republica' foi marcado como LIDO.
